@@ -28,6 +28,7 @@ public class ShowInterstitialFunction implements FREFunction
 {
 	public FREObject call(FREContext context, FREObject[] args) 
 	{
+
 		if (args.length > 0)
 		{
 			// Retrieve the location
@@ -41,12 +42,16 @@ public class ShowInterstitialFunction implements FREFunction
 				AirChartboostExtension.log(e.getMessage());
 				return null;
 			}
-			
+
 			Chartboost.sharedChartboost().showInterstitial(location);
+
+            context.dispatchStatusEventAsync("LOGGING", "ShowInterstitialFunction A");
 		}
 		else
 		{
 			Chartboost.sharedChartboost().showInterstitial();
+
+            context.dispatchStatusEventAsync("LOGGING", "ShowInterstitialFunction B");
 		}
 		
 		return null;

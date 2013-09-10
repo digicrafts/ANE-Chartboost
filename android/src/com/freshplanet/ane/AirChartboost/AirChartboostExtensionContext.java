@@ -28,6 +28,8 @@ import com.freshplanet.ane.AirChartboost.functions.CacheInterstitialFunction;
 import com.freshplanet.ane.AirChartboost.functions.HasCachedInterstitialFunction;
 import com.freshplanet.ane.AirChartboost.functions.ShowInterstitialFunction;
 import com.freshplanet.ane.AirChartboost.functions.StartSessionFunction;
+import com.freshplanet.ane.AirChartboost.functions.ShowMoreAppsFunction;
+import com.freshplanet.ane.AirChartboost.functions.CacheMoreAppsFunction;
 
 public class AirChartboostExtensionContext extends FREContext
 {
@@ -46,6 +48,8 @@ public class AirChartboostExtensionContext extends FREContext
 		functions.put("showInterstitial", new ShowInterstitialFunction());
 		functions.put("cacheInterstitial", new CacheInterstitialFunction());
 		functions.put("hasCachedInterstitial", new HasCachedInterstitialFunction());
+        functions.put("showMoreApps", new ShowMoreAppsFunction());
+        functions.put("cacheMoreApps", new CacheMoreAppsFunction());
 		
 		return functions;	
 	}

@@ -32,6 +32,8 @@ DEFINE_ANE_FUNCTION(CBStartSession);
 DEFINE_ANE_FUNCTION(CBShowInterstitial);
 DEFINE_ANE_FUNCTION(CBCacheInterstitial);
 DEFINE_ANE_FUNCTION(CBHasCachedInterstitial);
+DEFINE_ANE_FUNCTION(CBShowMoreApps);
+DEFINE_ANE_FUNCTION(CBCacheMoreApps);
 
 
 // ANE setup

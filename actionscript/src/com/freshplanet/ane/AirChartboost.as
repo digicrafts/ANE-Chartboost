@@ -139,6 +139,32 @@ package com.freshplanet.ane
 			}
 			else return false;
 		}
+
+        /**
+         * Show an interstitial, optionally with a location identifier.
+         *
+         * @param location String (optional): A Chartboost location identifier.
+         */
+        public function showMoreApps() : void
+        {
+            if (isChartboostSupported)
+            {
+                extCtx.call('showMoreApps');
+            }
+        }
+
+        /**
+         * Start caching an interstitial, optionally with a location identifier.
+         *
+         * @param location String (optional): A Chartboost location identifier.
+         */
+        public function cacheMoreApps() : void
+        {
+            if (isChartboostSupported)
+            {
+                extCtx.call('cacheMoreApps');
+            }
+        }
 		
 		
 		// --------------------------------------------------------------------------------------//

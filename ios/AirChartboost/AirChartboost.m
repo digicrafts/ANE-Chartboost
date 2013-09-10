@@ -90,6 +90,47 @@ static AirChartboost *sharedInstance = nil;
     }
 }
 
+- (void)didDismissMoreApps
+{
+    if (AirChartboostCtx != nil)
+    {
+        FREDispatchStatusEventAsync(AirChartboostCtx, (const uint8_t *)"DidDismissMoreApps", (const uint8_t *)"ok");
+    }
+}
+
+- (void)didCloseMoreApps
+{
+    if (AirChartboostCtx != nil)
+    {
+        FREDispatchStatusEventAsync(AirChartboostCtx, (const uint8_t *)"DidCloseMoreApps", (const uint8_t *)"ok");
+    }
+}
+
+- (void)didClickMoreApps
+{
+    if (AirChartboostCtx != nil)
+    {
+        FREDispatchStatusEventAsync(AirChartboostCtx, (const uint8_t *)"DidClickMoreApps", (const uint8_t *)"ok");
+    }
+}
+
+- (void)didFailToLoadMoreApps
+{
+    if (AirChartboostCtx != nil)
+    {
+        FREDispatchStatusEventAsync(AirChartboostCtx, (const uint8_t *)"DidFailToLoadMoreApps", (const uint8_t *)"ok");
+    }
+}
+
+- (void)didCacheMoreApps
+{
+    if (AirChartboostCtx != nil)
+    {
+        FREDispatchStatusEventAsync(AirChartboostCtx, (const uint8_t *)"DidCacheMoreApps", (const uint8_t *)"ok"    );
+    }
+}
+
+
 @end
 
 
@@ -193,6 +234,22 @@ DEFINE_ANE_FUNCTION(CBHasCachedInterstitial)
     return freObject;
 }
 
+DEFINE_ANE_FUNCTION(CBShowMoreApps)
+{
+
+    [[Chartboost sharedChartboost] showMoreApps];
+    
+    return nil;
+}
+
+DEFINE_ANE_FUNCTION(CBCacheMoreApps)
+{
+    
+    [[Chartboost sharedChartboost] cacheMoreApps];
+    
+    return nil;
+}
+
 
 #pragma mark - ANE setup
 
@@ -237,7 +294,7 @@ void AirChartboostContextInitializer(void* extData, const uint8_t* ctxType, FREC
     /* The following code describes the functions that are exposed by this native extension to the ActionScript code.
      * As a sample, the function isSupported is being provided.
      */
-    *numFunctionsToTest = 4;
+    *numFunctionsToTest = 6;
 
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * (*numFunctionsToTest));
     
@@ -256,6 +313,14 @@ void AirChartboostContextInitializer(void* extData, const uint8_t* ctxType, FREC
     func[3].name = (const uint8_t*) "hasCachedInterstitial";
     func[3].functionData = NULL;
     func[3].function = &CBHasCachedInterstitial;
+    
+    func[4].name = (const uint8_t*) "cacheMoreApps";
+    func[4].functionData = NULL;
+    func[4].function = &CBCacheMoreApps;
+    
+    func[5].name = (const uint8_t*) "showMoreApps";
+    func[5].functionData = NULL;
+    func[5].function = &CBShowMoreApps;
 
     *functionsToSet = func;
 

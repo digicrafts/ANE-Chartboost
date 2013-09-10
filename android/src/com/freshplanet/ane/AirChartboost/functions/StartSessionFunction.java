@@ -47,7 +47,9 @@ public class StartSessionFunction implements FREFunction
 		Chartboost cb = Chartboost.sharedChartboost();
 		cb.onCreate(context.getActivity(), appId, appSignature, new AirChartboostDelegate());
 		cb.startSession();
-		
+
+        context.dispatchStatusEventAsync("LOGGING", "Start Session Completed");
+
 		return null;
 	}
 }
